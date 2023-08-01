@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\简单题">
+      <UniqueIdentifier>{b78e1b83-1d21-409b-89c7-f80f8de0bd79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\01背包问题">
+      <UniqueIdentifier>{d9f809f5-94a3-4816-adc3-39f81a29c4d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\完全背包问题">
+      <UniqueIdentifier>{a6c9312a-76f2-428d-81f3-e6c707c109f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="不同的二叉搜索树.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="不同路径.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="不同路径2.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="斐波那契数列.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="爬楼梯.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="使用最小花费爬楼梯.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="整数拆分.cpp">
+      <Filter>源文件\简单题</Filter>
+    </ClCompile>
+    <ClCompile Include="分割等和子集.cpp">
+      <Filter>源文件\01背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="最后一块石头的重量2.cpp">
+      <Filter>源文件\01背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="目标和.cpp">
+      <Filter>源文件\01背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="一和零.cpp">
+      <Filter>源文件\01背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="零钱兑换2.cpp">
+      <Filter>源文件\完全背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="组合总和4.cpp">
+      <Filter>源文件\完全背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="零钱兑换.cpp">
+      <Filter>源文件\完全背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="完全平方数.cpp">
+      <Filter>源文件\完全背包问题</Filter>
+    </ClCompile>
+    <ClCompile Include="单词拆分.cpp">
+      <Filter>源文件\完全背包问题</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

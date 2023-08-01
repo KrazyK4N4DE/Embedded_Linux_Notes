@@ -1,0 +1,4 @@
+﻿  F 时间显示.cpp
+D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\算法笔记\蓝桥杯\F 时间显示.cpp(19,9): warning C4244: “初始化”: 从“LL”转换到“int”，可能丢失数据
+D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\算法笔记\蓝桥杯\F 时间显示.cpp(21,9): warning C4244: “初始化”: 从“LL”转换到“int”，可能丢失数据
+  蓝桥杯.vcxproj -> D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\算法笔记\x64\Debug\A-蓝桥杯.exe

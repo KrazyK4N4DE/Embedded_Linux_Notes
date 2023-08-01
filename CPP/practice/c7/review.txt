@@ -1,0 +1,100 @@
+1
+函数定义，函数原型，函数调用
+
+2
+a. void igor(void);
+b. float tofu(int a);
+c. double mpg(double double);
+d. long summation(long[], int);
+e. double doctor(const char *);
+f. void ofcourse(boss bs);
+g. char *plot(map *pt);
+
+3
+void modify(int ar[], int SIZE, int n)
+{
+        for(int i = 0; i < SIZE; i++)
+                ar[i] = n;
+}
+
+4
+void set_array(int *begin, int *end, int n)
+{
+        for(int *pt = begin; pt != end; pt++)
+                *pt = n;
+}
+
+5
+double array_max(const double ar[], int SIZE)
+{
+        double max = ar[0];
+        for(int i = 1; i < SIZE; i++)
+        {
+                if(ar[i - 1] < ar[i])
+                        max = ar[i];
+        }
+        return max;
+}
+
+6
+传递基本类型是按值传递，函数的形参只是实参的副本；
+如果用指针传递则需要注意要不要加const。
+
+7
+字符数组：      char str[] = {'s', 't', 'r', '\0'};
+字符串常量：    "string";
+字符串指针：    char *str = "string";
+
+8
+int replace(char *str, char c1, char c2)
+{
+        int count = 0;
+        while(*str)
+        {
+                if(*str == c1)
+                {
+                        *str = c2;
+                        count++;
+                }
+                str++;
+        }
+        return count;
+}
+
+9
+首先"pizza"代表字符串的地址，即首字母p的地址，
+再使用*把放在地址的内容取出 -> p。
+"taco"[2] -> char *pt = "taco" -> pt[2] -> c。
+
+10
+按值传递：直接把变量名传过去；传递的是结构体的副本，保护原始数据，但是浪费空间，效率低。
+传递地址：变量名前加&传过去；不能保护原始数据(可以加const)，但是效率高。
+
+11
+int judge(int (*pf)(const char *));
+
+12
+void show(applicant app)
+{
+        cout << app.name << endl;
+        for(int i = 0; i < 3; i++)
+                cout << app.credit_ratings[i] << endl;
+}
+
+void show(cnost applicant *pt)
+{
+        cout << pt->name << endl;
+        for(int i = 0; i < 3; i++)
+                cout << (*pt).credit_ratings[i] << endl;
+}
+
+13
+typedef void (*p_f1)(applicant *a);
+p_f1 p1 = f1;
+
+typedef const char *(*p_f2)(const applicant *a1, const applicant *a2);
+p_f2 = f2;
+
+p_f1 ap[5];
+
+p_f2 (*pa)[10]; 

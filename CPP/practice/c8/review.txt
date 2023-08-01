@@ -1,0 +1,71 @@
+1
+代码量小，没有递归
+
+2
+a. void song(const char *name, int times = 1);
+b. void song(const char *name, int times)
+{
+}
+c. void song(const char *name = "O.My Papa", int times = 1);
+
+3
+void iquote(int n)
+{
+        cout << "\"" << n << "\"" << endl;
+}
+
+void iquote(double d)
+{
+        cout << "\"" << d << "\"" << endl;
+}
+
+void iquote(string s)
+{
+        cout << "\"" << s << "\"" << endl;
+}
+
+4
+void show(const box &b)
+{
+        cout << "Name: " << b.name << endl;
+        cout << "Height: " << b.height << endl;
+        cout << "Width: " << b.width << endl;
+        cout << "Length: " << b.length << endl;
+        cout << "Volume: " << b.volume << endl;
+}
+
+void set(box &b)
+{
+        b.volume = b.height * b.width * b.length;
+}
+
+6
+a. 两者都可以
+double mass(double density, double volume = 1);
+Overload:
+double mass(double density, double volume);
+double mass(double density);
+b. 不能使用默认参数，可以重载
+Overload:
+void repeat(int times, const char *str);
+void repeat(const char *str);
+
+7
+template <typename T>
+T max(T t1, T t2)
+{
+        return t1 > t2 ? t1 : t2;
+}
+
+8
+template <> box max(box b1, box b2)
+{
+        return b1.volume > b2.volume ? b1 : b2;
+}
+
+9
+v1 --> float
+v2 --> float &
+v3 --> float &
+v4 --> int
+v5 --> double

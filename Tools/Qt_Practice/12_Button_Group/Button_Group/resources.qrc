@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Images/goku.png</file>
+    </qresource>
+</RCC>

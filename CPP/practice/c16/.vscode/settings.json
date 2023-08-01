@@ -1,0 +1,7 @@
+{
+        "files.associations": {
+                "memory": "cpp",
+                "xstddef": "cpp",
+                "vector": "cpp"
+        }
+}

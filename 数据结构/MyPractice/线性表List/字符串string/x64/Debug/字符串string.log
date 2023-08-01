@@ -1,0 +1,4 @@
+﻿  KMP匹配.cpp
+D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\线性表List\字符串string\KMP匹配.cpp(12,27): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\线性表List\字符串string\KMP匹配.cpp(13,27): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  字符串string.vcxproj -> D:\Software\BaiduNetdisk\BaiduSyncdisk\Code\Data_Structures\MyPractice\线性表List\x64\Debug\字符串string.exe

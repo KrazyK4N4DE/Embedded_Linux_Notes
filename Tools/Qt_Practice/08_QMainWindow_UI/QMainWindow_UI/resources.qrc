@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>python.ico</file>
+        <file>star.ico</file>
+    </qresource>
+</RCC>

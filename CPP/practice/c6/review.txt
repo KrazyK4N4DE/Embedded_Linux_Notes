@@ -1,0 +1,54 @@
+1
+第二种格式有时只需检测一次ch的条件，执行效率较高
+
+2
+ch+1会带来char型的等级提升，结果就是变成整型；++ch最终还是cahr型
+
+3
+H$i$!$
+$S$e$n$d$ $ct1 = 9, ct2 = 9
+
+4
+a. (weight >= 115) && (weight < 125);
+b. (ch == 'q') || (ch == 'Q');
+c. (x % 2 == 0) && (x != 26);
+d. (x % 2 == 0) && (x % 26 != 0);
+e. ((donation >= 1000) && (donation <= 2000)) || (guest == 1);
+f. ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'));
+
+5
+当x为bool型时，相同；
+当x为其他型时，例如x为10，则!x == false，!!x == true
+
+6
+(x >= 0) ? x : -x;
+
+7
+switch(ch)
+{
+	case 'A':
+		a_grade++;
+		break;
+	case 'B':
+		b_grade++;
+		break;
+	case 'C':
+		c_grade++;
+		break;
+	case 'D':
+		d_grade++;
+		break;
+	default:
+		f_grade++;
+}
+
+8
+原来choice是int型，输入非数字时，cin会将该字符留在缓冲区，所以导致死循环；
+改成char型，就没问题
+
+9
+while(cin.get(ch) && ch != 'Q')
+{
+	if(ch == '\n')
+		line++;
+}

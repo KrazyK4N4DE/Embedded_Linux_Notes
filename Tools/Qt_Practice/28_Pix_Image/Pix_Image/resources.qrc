@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Images/optimus_prime.jpeg</file>
+    </qresource>
+</RCC>

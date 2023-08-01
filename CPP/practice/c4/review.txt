@@ -1,0 +1,82 @@
+/*
+1
+char actor[30];
+short betsie[100];
+float chuck[13];
+long double dipsea[64];
+
+2
+#include<array>
+array<char, 30> actor;
+array<short, 100> betsie;
+array<float, 13> chuck;
+array<long double, 64> dipsea;
+
+3
+int a[5] = { 1, 3, 5, 7, 9 };
+	
+4
+int even = a[0] + a[4];
+	
+5
+cout << idea[1];
+	
+6
+char a[] = "cheeseburger";
+	
+7
+string b = "Waldorf Salad";
+	
+8
+struct fishes
+{
+	char type[20];
+	int weight;
+	double len;
+};
+	
+9
+fishes eel = 
+{
+	... ,
+	... ,
+	...
+};
+	
+10
+enum response {No, Yes, Maybe};
+	
+11
+double *pt = &ted;
+cout << *pt;
+
+12
+float* pt = treacle;
+cout << *pt << " " << *(pt + 9);
+
+13
+int num;
+cin >> num;
+int* pt = new int[num];		//做错 int* arr = new int[num * sizeof(int)];
+delete[] arr;
+vector<int> vt(num);
+
+14
+有效，打印出来的是该字符串的地址
+
+15
+fishes* tuna = new fishes;		//做错 fishes tuna = new fishes;
+tuna->type;
+(*tuna).name;
+
+16
+可以照常输入address，因为cin会自动省略输入有效字符之前的空白
+
+17
+#include<vector>
+#include<array>
+#include<string>		//做错 #include<cstring>
+const int num = 10;
+std::vector<std::string> vt(num);		//做错 vector<string> vt(num);
+std::array<std::string, num> arr;		//做错 array<string, num> arr;
+*/
