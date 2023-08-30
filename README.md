@@ -7,6 +7,7 @@
 - C/C++
 - 数据结构与算法
 - Linux系统编程与网络编程
+- Linux驱动基础
 - Qt
 - CAN通信基础
 - Makefile

@@ -176,7 +176,7 @@ void postOrder2(bt root)
 				}
 		}
 }
-// 后序遍历，传入的参数为二叉树的根结点
+// 层序遍历，传入的参数为二叉树的根结点
 void levelOrder(bt root)
 {
 		struct LinkQueue queue;
