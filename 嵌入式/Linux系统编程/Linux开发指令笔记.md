@@ -100,7 +100,7 @@ rmmod <kofile>
 dmesg
 ```
 
-**修改内核的打印级别**：
+**修改内核的打印级别，能够在bash中看到内核打印信息**：
 
 ```sh
 echo "7 4 1 7" > /proc/sys/kernel/printk
