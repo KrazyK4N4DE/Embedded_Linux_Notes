@@ -9,10 +9,10 @@
 - Linux系统编程与网络编程
 - Linux驱动基础
 - Qt
-- CAN通信基础
 - Makefile
 - CMake
 - Git
 - Markdown
+- 常见嵌入式通信协议基础
 
 *Tip：一般是写够一定量了再上传上来。*
