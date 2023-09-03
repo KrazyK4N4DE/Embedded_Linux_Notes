@@ -62,6 +62,20 @@ export RUNLEVEL=3
 
 可能跟QT_QPA_INPUT环境变量设置有关，或者跟xkbcommon有关。
 
+### 时间设置
+
+设置系统时间：
+
+```sh
+date <MMDDhhmmYYYY.ss>
+```
+
+重启后系统时间还是会归回1970，为了解决这个问题，将系统时间写入到RTC设备中，使RTC时间和系统时间同步：
+
+```sh
+hwclock -w
+```
+
 ---
 
 ## Linux驱动

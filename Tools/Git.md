@@ -196,3 +196,23 @@ git pull <reponame>
 
 - fetch是只获取但不合并远程分支，后面需要手动合并才能提交。
 - pull是获取加合并。
+
+### SSH配置
+
+使用HTTPS推送会因为网络原因一直推不上，因此要使用SSH连接。
+
+**在本机生成ssh key**：
+
+```sh
+ssh-keygen -t rsa -C "xxx"
+```
+
+提示没有.ssh文件夹就手动创建后再使用命令。
+
+**查看本机的ssh key**：
+
+```sh
+cat ~/.ssh/id_rsa.pub
+```
+
+在GitHub上添加公钥即可。
