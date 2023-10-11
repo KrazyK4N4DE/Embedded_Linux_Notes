@@ -70,3 +70,34 @@
 - 应用程序可以使用**TTY**的统一接口，从而不用去区分设备是串口还是其它输入输出设备，就可以访问它们。
 - **行规程** (Line discipline) 处于应用程序和驱动程序之间，负责处理输入与输出。
   - 应用程序可以通过 `ioctl()` 或其它封装好的函数，设置行规程。
+
+### 编程思路
+
+对于UART，编程的套路就是：
+
+1. open()
+2. **设置行规程**
+   - 波特率
+   - 数据位
+   - 停止位
+   - 校验位
+   - RAW模式 (原始模式，让行规程不处理UART传来的数据)
+   - 一有数据就返回 (默认情况下，行规成接收到数据先保存，输入回车后才传给应用程序，而外界模块时需要及时获取数据)
+3. read() / write()
+
+那么如何控制行规程呢？串口在Linux中被抽象成一个结构体 `termios` (terminal io system)：
+
+![20231011231633](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231011231633.png)
+
+一般是设置c_cflag，然后将结构体发给驱动程序。可以使用ioctl()来实现，但Linux封装了一些函数，更快捷一些：
+
+函数名 | 作用
+:--- | :---
+tcgetattr | 获得终端的属性
+tcsetattr | 修改终端参数
+tcflush | 清空终端未完成的输入/输出请求及数据
+cfsetispeed | 设置输入波特率
+cfsetospeed | 设置输出波特率
+cfsetspeed | 同时设置输入、输出波特率
+
+(函数名中，tc表示terminal control，cf表示control flag)
