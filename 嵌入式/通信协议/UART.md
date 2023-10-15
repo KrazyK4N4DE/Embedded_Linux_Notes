@@ -89,7 +89,7 @@
 
 ![20231011231633](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231011231633.png)
 
-一般是设置c_cflag，然后将结构体发给驱动程序。可以使用ioctl()来实现，但Linux封装了一些函数，更快捷一些：
+设置好flag之后，将结构体发给驱动程序。可以使用ioctl()来实现，但Linux在这之上封装了一些函数，更快捷一些：
 
 函数名 | 作用
 :--- | :---

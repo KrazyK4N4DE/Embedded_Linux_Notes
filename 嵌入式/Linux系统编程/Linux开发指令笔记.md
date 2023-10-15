@@ -67,14 +67,19 @@ export RUNLEVEL=3
 设置系统时间：
 
 ```sh
-date <MMDDhhmmYYYY.ss>
+date -s <"YYYYY-MM-DD hh:mm:ss">
 ```
 
 重启后系统时间还是会归回1970，为了解决这个问题，将系统时间写入到RTC设备中，使RTC时间和系统时间同步：
 
 ```sh
-hwclock -w
+hwclock <cmd>
 ```
+
+cmd中：
+
+- `-s`：以硬件时钟为准，校正**系统时钟**。
+- `-w`：以系统时钟为准，校正**硬件时钟**。
 
 ---
 
