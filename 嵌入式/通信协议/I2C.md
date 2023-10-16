@@ -117,3 +117,80 @@ int i2c_transfer(struct i2c_adapter*, struct i2c_msg*, int);
 ```
 
 将i2c_adapter中的传输函数封装起来，且不需要i2c_client (因为i2c_msg中已经有设备地址)。
+
+### 使用i2c工具访问AP3216C传感器
+
+App访问硬件是必须需要驱动程序的，Linux内核提供了 `drivers/i2c/i2c-dev.c`，这是通用的I2C驱动程序，可以用于直接访问I2C控制器驱动程序。
+
+![20231016110842](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016110842.png)
+
+#### i2cdetect
+
+如何查看板子上有多少个I2C控制器/总线？
+
+```sh
+i2cdetect -l
+```
+
+或
+
+```sh
+ls /dev/i2c-*
+```
+
+检测各个控制器上有哪些设备挂着：
+
+```sh
+i2cdetect -y <i2c_controller_number>
+```
+
+- `-y`：表示不需要提示
+- `i2c_controller_number`：总线号
+
+![20231016111626](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016111626.png) | ![20231016111744](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016111744.png)
+--- | ---
+
+`UU` 表示该地址上存在I2C设备，且在内核中已有驱动程序；不是UU而是为具体的地址值，如 `1e` 的话，表示设备存在，但没有驱动程序。
+
+#### 访问设备
+
+AP3216C是红外、光强、距离三合一传感器，经查询得知设备地址为0x1E，位于I2CBus0上。操作步骤如下：
+
+1. 复位：往寄存器0写入0x4
+2. 使能：往寄存器0写入0x3
+3. 读光强：读寄存器0xC、0xD得到2字节的光强值
+4. 读距离：读寄存器0xE、0xF得到2字节的距离值
+
+**基于SMBus协议的操作**：
+
+```sh
+i2cset -f -y 0 0x1e 0 0x4
+i2cset -f -y 0 0x1e 0 0x3
+i2cget -f -y 0 0x1e 0xc w
+i2cget -f -y 0 0x1e 0xe w
+```
+
+- `-f`：强制，对于已有驱动程序的设备，如果不使用这个参数则会操作失败。
+- i2cset：写操作。
+- i2cget：读操作。默认是读1个字节 (可以用 `b` 显示指定)，结尾加上 `w` 表示读双字节。
+
+**基于I2C协议的操作**：
+
+```sh
+i2ctransfer -f -y 0 w2@0x1e 0 0x4
+i2ctransfer -f -y 0 w2@0x1e 0 0x3
+i2ctransfer -f -y 0 w1@0x1e 0xc r2
+i2ctransfer -f -y 0 w1@0x1e 0xe r2
+```
+
+- 这里读操作也需要写，是因为要把地址0xc、0xe发给设备。
+
+#### i2c工具的底层原理 (源码)
+
+I2C方式：
+
+![20231016124925](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016124925.png)
+
+SMBus方式：
+
+![smbustrans](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/smbustrans.png)
