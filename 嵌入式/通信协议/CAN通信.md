@@ -75,6 +75,8 @@
 
 ## CAN概述
 
+Controller Area Network，控制器局域网。
+
 特点：
 
 - 双线差分信号

@@ -1,4 +1,4 @@
-# I2C
+# i2c
 
 ## 硬件
 
@@ -10,7 +10,7 @@
 
 ---
 
-## I2C协议帧
+## i2c协议帧
 
 **写操作**：
 
@@ -27,7 +27,7 @@
 - 发送完地址+方向后，从芯片要发送1位ACK位；收到数据后，接收方也要发送ACK位。低电平表示回应。
 - 开始位和结束位都是由主芯片发起。
 
-### I2C位传输规则
+### i2c位传输规则
 
 ![20230901152417](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20230901152417.png)
 
@@ -38,11 +38,11 @@
 - 开始后，SCL从恒定高电平变为**脉冲时钟**，结束后再恢复原样。
 - SCL高电平且SDA电平保持稳定时，SDA传输的数据才有效。
 
-### I2C电路
+### i2c电路
 
 可以注意到，SDA有时是主芯片驱动，有时是从芯片驱动。万一出现一方输出高电平、另一方出现低电平的情况，就会短路，电路烧坏！
 
-于是，I2C采用以下电路：
+于是，i2c采用以下电路：
 
 ![I2C电路](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/I2C电路.png)
 
@@ -61,22 +61,22 @@ SCL时钟线同理。
 
 ## SMBus协议
 
-SMBus协议是I2C协议的一个子集，在I2C的基础上有更高的要求。
+SMBus协议是i2c协议的一个子集，在i2c的基础上有更高的要求。
 
 ### 硬件上
 
 - VDD极限值
-  - I2C：范围广，甚至达12V
+  - i2c：范围广，甚至达12V
   - SMBus：1.8V ~ 5V
 - 最小时钟频率、最大clock stretching
-  - clock stretching即时钟延伸，某个设备需要更多时间来内部处理时，把SCL拉低一段时间占住I2C总线
-  - I2C：都没有限制
+  - clock stretching即时钟延伸，某个设备需要更多时间来内部处理时，把SCL拉低一段时间占住i2c总线
+  - i2c：都没有限制
   - SMBus：时钟频率最小值为10kHz，最大时钟延伸也有限制
-- I2C设备接收到它的地址后，是否必须回应？
-  - I2C：没有强制要求必须要发送回应信号
+- i2c设备接收到它的地址后，是否必须回应？
+  - i2c：没有强制要求必须要发送回应信号
   - SMBus：必须要回应
 - 数据传输格式
-  - I2C：只定义了怎么传输数据，没有定义数据的格式
+  - i2c：只定义了怎么传输数据，没有定义数据的格式
   - SMBus：定义了数据的格式
 
 ### 数据传输格式上
@@ -87,23 +87,23 @@ SMBus定义的数据格式如下：
 
 ![20231015220210](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231015220210.png)
 
-### SMBus和I2C
+### SMBus和i2c
 
-- 因为很多设备都实现了SMBus，而不是更宽泛的I2C协议，所以**优先使用SMBus**。
-- 即使I2C控制器没有实现SMBus，软件方面也是可以使用I2C协议来模拟SMBus
+- 因为很多设备都实现了SMBus，而不是更宽泛的i2c协议，所以**优先使用SMBus**。
+- 即使i2c控制器没有实现SMBus，软件方面也是可以使用i2c协议来模拟SMBus
 
 ---
 
-## I2C编程
+## i2c编程
 
-Linux中，I2C系统有3个重要的结构体：
+Linux中，i2c系统有3个重要的结构体：
 
-- 用结构体 `i2c_adapter` 表示I2C控制器。
-  - `.nr`：表示第几个I2C控制器/第几条I2C总线
-  - `.algorithm.master_xfer`：I2C控制器的传输函数
-- 用结构体 `i2c_client` 表示I2C设备。
+- 用结构体 `i2c_adapter` 表示i2c控制器。
+  - `.nr`：表示第几个i2c控制器/第几条i2c总线
+  - `.algorithm.master_xfer`：i2c控制器的传输函数
+- 用结构体 `i2c_client` 表示i2c设备。
   - `.addr`：设备地址
-  - `.i2c_adapter`：指向某一个I2C控制器，表示设备挂在这个I2C控制器下
+  - `.i2c_adapter`：指向某一个i2c控制器，表示设备挂在这个i2c控制器下
 - 用结构体 `i2c_msg` 表示传输的数据。
   - `.buf`：数据
   - `.len`：数据长度
@@ -120,13 +120,13 @@ int i2c_transfer(struct i2c_adapter*, struct i2c_msg*, int);
 
 ### 使用i2c工具访问AP3216C传感器
 
-App访问硬件是必须需要驱动程序的，Linux内核提供了 `drivers/i2c/i2c-dev.c`，这是通用的I2C驱动程序，可以用于直接访问I2C控制器驱动程序。
+App访问硬件是必须需要驱动程序的，Linux内核提供了 `drivers/i2c/i2c-dev.c`，这是通用的i2c驱动程序，可以用于直接访问i2c控制器驱动程序。
 
 ![20231016110842](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016110842.png)
 
 #### i2cdetect
 
-如何查看板子上有多少个I2C控制器/总线？
+如何查看板子上有多少个i2c控制器/总线？
 
 ```sh
 i2cdetect -l
@@ -150,11 +150,11 @@ i2cdetect -y <i2c_controller_number>
 ![20231016111626](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016111626.png) | ![20231016111744](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016111744.png)
 --- | ---
 
-`UU` 表示该地址上存在I2C设备，且在内核中已有驱动程序；不是UU而是为具体的地址值，如 `1e` 的话，表示设备存在，但没有驱动程序。
+`UU` 表示该地址上存在i2c设备，且在内核中已有驱动程序；不是UU而是为具体的地址值，如 `1e` 的话，表示设备存在，但没有驱动程序。
 
 #### 访问设备
 
-AP3216C是红外、光强、距离三合一传感器，经查询得知设备地址为0x1E，位于I2CBus0上。操作步骤如下：
+AP3216C是红外、光强、距离三合一传感器，经查询得知设备地址为0x1E，位于i2cBus0上。操作步骤如下：
 
 1. 复位：往寄存器0写入0x4
 2. 使能：往寄存器0写入0x3
@@ -174,7 +174,7 @@ i2cget -f -y 0 0x1e 0xe w
 - i2cset：写操作。
 - i2cget：读操作。默认是读1个字节 (可以用 `b` 显示指定)，结尾加上 `w` 表示读双字节。
 
-**基于I2C协议的操作**：
+**基于i2c协议的操作**：
 
 ```sh
 i2ctransfer -f -y 0 w2@0x1e 0 0x4
@@ -187,10 +187,28 @@ i2ctransfer -f -y 0 w1@0x1e 0xe r2
 
 #### i2c工具的底层原理 (源码)
 
-I2C方式：
+i2c方式：
 
 ![20231016124925](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/20231016124925.png)
 
 SMBus方式：
 
 ![smbustrans](https://image-hosting-1313474851.cos.ap-shanghai.myqcloud.com/Notes/smbustrans.png)
+
+---
+
+## 通信协议之间的关系
+
+通信协议 | 硬件连接 | 速率级别 | 传输方式 | 功能
+ :---|:---|:---|:---|:---
+spi | 至少4线 | MHz | 同步 | 全双工，一对多
+i2c | 2线 | KHz | 同步 | 半双工，多对多
+spi | 3线 | 最大115200bps | 异步 | 全双工，一对一
+
+- 传输速率：spi > i2c > UART
+- 传输距离：UART > i2c > spi
+
+为什么spi比i2c速度快？
+
+- i2c传输线比spi少，因此在协议上规定了地址检查和应答位。
+- spi主机生成时钟信号以控制通信速率，而i2c是多主从式的通信，通信速度受到总线上所有设备的共享。
